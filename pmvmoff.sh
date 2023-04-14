@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# creates vmid varaible that stores all VM IDs present
-vmid=$(qm list | awk 'NR>1 {print $1}')
+# creates vmid varaible that stores all VM IDs that have the status of "running"
+vmid=$(qm list | awk '$3 ~ /running/ {print $1}')
 
 # for loop that allows commands on individual lines=single VM ID
 for line in $vmid 
